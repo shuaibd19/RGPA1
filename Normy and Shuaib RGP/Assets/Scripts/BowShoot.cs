@@ -32,6 +32,7 @@ public class BowShoot : MonoBehaviour
 
         //vertical += Mathf.Abs(Input.GetAxis("Mouse Y") * testForce);
         vertical += (Input.GetAxis("Mouse Y") * -1f) * testForce;
+        vertical += (Input.GetAxis("Mouse ScrollWheel") * -1f) * testForce * 30;
         //clamp the result between the maxforce and min force and assign it to the guage
         guage = Mathf.Clamp(vertical, minForce, maxForce);
 
