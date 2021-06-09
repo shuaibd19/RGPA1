@@ -36,7 +36,7 @@ public class BowShoot : MonoBehaviour
         //clamp the result between the maxforce and min force and assign it to the guage
         guage = Mathf.Clamp(vertical, minForce, maxForce);
 
-        forceGuage.text = "Force: " + guage.ToString();
+        forceGuage.text = "Force: " + guage.ToString("F2");
 
         //Debug.Log(vertical);
 
