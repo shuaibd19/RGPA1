@@ -27,27 +27,29 @@ public class BowShoot : MonoBehaviour
 
     private void Update()
     {
-        //make this an absolute value
-        //var vertical = Mathf.Abs(Input.GetAxis("Mouse Y") * shootForce);
-
-        //vertical += Mathf.Abs(Input.GetAxis("Mouse Y") * testForce);
-        vertical += (Input.GetAxis("Mouse Y") * -1f) * testForce;
-        vertical += (Input.GetAxis("Mouse ScrollWheel") * -1f) * testForce * 30;
-        //clamp the result between the maxforce and min force and assign it to the guage
-        guage = Mathf.Clamp(vertical, minForce, maxForce);
-
-        forceGuage.text = "Force: " + guage.ToString("F2");
-
-        //Debug.Log(vertical);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!Input.GetMouseButton(1))
         {
-            GameObject arr = Instantiate(arrow, ejectionPoint.position, Quaternion.identity);
-            Rigidbody rb = arr.GetComponent<Rigidbody>();
-            rb.velocity = cam.transform.forward * guage;
-            guage = 0f;
+            //make this an absolute value
+            //var vertical = Mathf.Abs(Input.GetAxis("Mouse Y") * shootForce);
+
+            //vertical += Mathf.Abs(Input.GetAxis("Mouse Y") * testForce);
+            vertical += (Input.GetAxis("Mouse Y") * -1f) * testForce;
+            vertical += (Input.GetAxis("Mouse ScrollWheel") * -1f) * testForce * 30;
+            //clamp the result between the maxforce and min force and assign it to the guage
+            guage = Mathf.Clamp(vertical, minForce, maxForce);
+
+            forceGuage.text = "Force: " + guage.ToString("F2");
+
+            //Debug.Log(vertical);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                GameObject arr = Instantiate(arrow, ejectionPoint.position, Quaternion.identity);
+                Rigidbody rb = arr.GetComponent<Rigidbody>();
+                rb.velocity = cam.transform.forward * guage;
+                guage = 0f;
+            }
+
         }
-
-
     }
 }
