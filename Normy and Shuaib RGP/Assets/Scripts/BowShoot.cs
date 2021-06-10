@@ -20,6 +20,7 @@ public class BowShoot : MonoBehaviour
     [SerializeField] private float maxForce = 50f;
     [SerializeField] private float minForce = 0f;
 
+
     private float vertical = 0f;
 
     //the guage meter for the amount of force to exert on arrow based on mouse y axis movement
