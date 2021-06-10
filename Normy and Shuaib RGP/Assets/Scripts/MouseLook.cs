@@ -19,6 +19,9 @@ public class MouseLook : MonoBehaviour
     //lower bound of head tilt from dead level
     [SerializeField] float headLowerAngleLimit = -60f;
 
+    //reference to the parent player controller 
+    [SerializeField] CharacterController controller;
+    
     //current rotation from dead level in degrees
     float yaw = 0f;
     float pitch = 0f;
@@ -48,7 +51,7 @@ public class MouseLook : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) || !controller.isGrounded)
         {
             //read the current horizontal and vertical movement and scale it based on the amount
             //that's elapsed and the movement speed
