@@ -46,6 +46,8 @@ public class BowShoot : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 GameObject arr = Instantiate(arrow, ejectionPoint.position, Quaternion.identity);
+                //GameObject arr = Instantiate(arrow, ejectionPoint.position, transform.parent.localRotation);
+                arr.transform.rotation = transform.parent.rotation;
                 Rigidbody rb = arr.GetComponent<Rigidbody>();
                 rb.velocity = cam.transform.forward * guage;
                 guage = 0f;

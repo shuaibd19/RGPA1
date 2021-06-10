@@ -55,11 +55,13 @@ public class MouseLook : MonoBehaviour
             var horizontal = Input.GetAxis("Mouse X") * Time.fixedDeltaTime * turnSpeed;
             var vertical = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime * turnSpeed * -1.0f; //inverting y axis for better experience
 
+
+
             //update yaw and pitch values
             yaw += horizontal;
             pitch += vertical;
 
-            Debug.Log(yaw);
+            //Debug.Log(yaw);
 
             //clamping the pitch so that we can never look directly up or down
             pitch = Mathf.Clamp(pitch, headLowerAngleLimit, headUpperAngleLimit);
@@ -73,6 +75,9 @@ public class MouseLook : MonoBehaviour
 
             transform.localRotation = bodyRotation * inBodyOrientation; //body
             head.localRotation = headRotation * inHeadOrientation; //head
+
+            //Debug.Log(inBodyOrientation);
+            //Debug.Log(inHeadOrientation);
         }
        
 
