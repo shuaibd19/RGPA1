@@ -21,7 +21,11 @@ public class DespawnTimer : MonoBehaviour
             timer -= Time.deltaTime;
 
         if (timer <= 0.0f)
-            gameObject.SetActive(false);
+        {
+            //gameObject.SetActive(false);
+            return;
+        }
+
 
     }
 

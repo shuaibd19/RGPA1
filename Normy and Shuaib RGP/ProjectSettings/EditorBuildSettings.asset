@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Normy.unity
+    guid: 15ee8e05843a1994d9721035ace314de
+  - enabled: 1
+    path: Assets/Scenes/Shuaib.unity
+    guid: e84278b820121ca48a7083f4199798f3
   m_configObjects: {}
