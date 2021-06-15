@@ -20,6 +20,9 @@ public class BowShoot : MonoBehaviour
     [SerializeField] private float maxForce = 50f;
     [SerializeField] private float minForce = 0f;
 
+    //object pooling implementation
+    [SerializeField] private ObjectPool arrowPool;
+
 
     private float vertical = 0f;
 
@@ -45,10 +48,17 @@ public class BowShoot : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                GameObject arr = Instantiate(arrow, ejectionPoint.position, Quaternion.identity);
-                //GameObject arr = Instantiate(arrow, ejectionPoint.position, transform.parent.localRotation);
-                arr.transform.rotation = transform.parent.rotation;
-                Rigidbody rb = arr.GetComponent<Rigidbody>();
+                var obj = arrowPool.GetObject();
+
+                obj.transform.position = ejectionPoint.position;
+                obj.transform.rotation = transform.parent.rotation;
+
+                //GameObject arr = Instantiate(arrow, ejectionPoint.position, Quaternion.identity);
+                ////GameObject arr = Instantiate(arrow, ejectionPoint.position, transform.parent.localRotation);
+                //arr.transform.rotation = transform.parent.rotation;
+
+
+                Rigidbody rb = obj.GetComponent<Rigidbody>();
                 rb.velocity = cam.transform.forward * guage;
                 guage = 0f;
             }
