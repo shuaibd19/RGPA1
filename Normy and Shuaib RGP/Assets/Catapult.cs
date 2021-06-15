@@ -11,7 +11,7 @@ public class Catapult : MonoBehaviour
     public float unwindCoefficient;
 
     float tension;
-    float mouseStartY;
+    //float mouseStartY;
     float unwindSpeed;
 
     float minAngle;
@@ -22,7 +22,7 @@ public class Catapult : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mouseStartY = Input.mousePosition.y;
+       // mouseStartY = Input.mousePosition.y;
         minAngle = 0.97f;
         maxAngle = 0.79f;
     }
@@ -30,13 +30,19 @@ public class Catapult : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.mousePosition.y < mouseStartY && catapultArm.transform.rotation.y >= maxAngle && !unloading)
+        //if (Input.mousePosition.y < mouseStartY && catapultArm.transform.rotation.y >= maxAngle && !unloading)
+        //{
+        //    float diff = Mathf.Abs(Input.mousePosition.y - mouseStartY);
+        //    catapultArm.transform.Rotate(new Vector3(1, 0, 0), (Input.mousePosition.y - mouseStartY) * diff / windingSpeed);
+        //    //tension += 24 * diff / windingSpeed;
+        //}
+        //mouseStartY = Input.mousePosition.y;
+        if (Input.GetAxis("MouseVerticalAxis") < 0)
         {
-            float diff = Mathf.Abs(Input.mousePosition.y - mouseStartY);
-            catapultArm.transform.Rotate(new Vector3(1, 0, 0), (Input.mousePosition.y - mouseStartY) * diff / windingSpeed);
-            //tension += 24 * diff / windingSpeed;
+            float diff = Input.GetAxis("MouseVerticalAxis");
+            catapultArm.transform.Rotate(new Vector3(1, 0, 0), diff);
+            tension += 24 * diff / windingSpeed;
         }
-        mouseStartY = Input.mousePosition.y;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
