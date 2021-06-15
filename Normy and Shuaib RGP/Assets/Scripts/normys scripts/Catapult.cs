@@ -43,24 +43,34 @@ public class Catapult : MonoBehaviour
 
     void Update()
     {
-        //if the user has pulled back the mouse
-        if (Input.mousePosition.y < mouseStartY)
+        ////if the user has pulled back the mouse
+        //if (Input.mousePosition.y < mouseStartY)
+        //{
+        //    //if the arm of the catapult is greater than or equal to the maxium angle
+        //    if (catapultArm.transform.rotation.y >= maxAngle)
+        //    {
+        //        //if the catapult is not currently unloading a projectile
+        //        if (!unloading)
+        //        {
+        //            //find the difference in y axis from the start position to the new mouse position
+        //            var difference = Input.mousePosition.y - mouseStartY;
+        //            //rotate the arm of the catapult by the difference in the x axis of rotation
+        //            catapultArm.transform.Rotate(new Vector3(1, 0, 0), difference * Mathf.Abs(difference) / windingSpeed);
+        //        }
+        //    }
+        //}
+        ////assign the new vertical axis value to the mouseStartY 
+        //mouseStartY = Input.mousePosition.y;
+
+        if (Input.GetAxis("Mouse Y") < 0)
         {
-            //if the arm of the catapult is greater than or equal to the maxium angle
             if (catapultArm.transform.rotation.y >= maxAngle)
             {
-                //if the catapult is not currently unloading a projectile
-                if (!unloading)
-                {
-                    //find the difference in y axis from the start position to the new mouse position
-                    var difference = Input.mousePosition.y - mouseStartY;
-                    //rotate the arm of the catapult by the difference in the x axis of rotation
-                    catapultArm.transform.Rotate(new Vector3(1, 0, 0), difference * Mathf.Abs(difference) / windingSpeed);
-                }
+                float diff = Input.GetAxis("Mouse Y");
+                catapultArm.transform.Rotate(new Vector3(1, 0, 0), diff);
+                //tension += 24 * diff / windingSpeed;
             }
         }
-        //assign the new vertical axis value to the mouseStartY 
-        mouseStartY = Input.mousePosition.y;
 
         //if the user presses the spacebar button
         if (Input.GetKeyDown(KeyCode.Space))
