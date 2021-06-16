@@ -73,7 +73,7 @@ public class Catapult : MonoBehaviour
         }
 
         //if the user presses the spacebar button
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(2))
         {
             //set the unloading to true
             unloading = true;
