@@ -39,7 +39,7 @@ public class PlayerAgent : MonoBehaviour
         ///to simulate momentum
         ///
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) || Input.GetMouseButton(2))
         {
             var input = new Vector3(
             Input.GetAxis("Horizontal"),

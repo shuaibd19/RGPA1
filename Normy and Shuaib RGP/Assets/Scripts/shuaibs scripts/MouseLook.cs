@@ -51,7 +51,7 @@ public class MouseLook : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(1) || !controller.isGrounded)
+        if (Input.GetMouseButton(1) || Input.GetMouseButton(2) || !controller.isGrounded)
         {
             //read the current horizontal and vertical movement and scale it based on the amount
             //that's elapsed and the movement speed
